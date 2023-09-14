@@ -1,130 +1,137 @@
+# Generic variables
 variable "region" {
   description = "Region code"
-  type = string
-  default = "us-east-1"
+  type        = string
+  default     = "us-east-1"
 }
 
+# VPC variables
 variable "vpc_name" {
-    description = "Name of the VPC"
-    type = string
-    default = "demo-vpc"
+  description = "Name of the VPC"
+  type        = string
+  default     = "demo-vpc"
 }
 
 variable "vpc_cidr" {
-    description = "VPC CIDR range"
-    type = string
-    default = "10.0.0.0/16"
+  description = "VPC CIDR range"
+  type        = string
+  default     = "10.0.0.0/16"
 }
 
 variable "vpc_azs" {
-    description = "List of AZS"
-    type = list(string)
-    default = [ "us-east-1a", "us-east-1b", "us-east-1c" ]
+  description = "List of AZs"
+  type        = list(string)
+  default     = ["us-east-1a", "us-east-1b", "us-east-1c"]
 }
 
 variable "vpc_public_subnets" {
-    description = "List of Public subnet CIDR ranges"
-    type = list(string)
-    default = [ "10.0.11.0/24", "10.0.12.0/24", "10.0.13.0/24" ]  
+  description = "List of public subnet CIDR ranges"
+  type        = list(string)
+  default     = ["10.0.11.0/24", "10.0.12.0/24", "10.0.13.0/24"]
 }
 
 variable "vpc_private_subnets" {
-    description = "List of Private subnet CIDR ranges"
-    type = list(string)
-    default = [ "10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24" ]  
+  description = "List of private subnet CIDR ranges"
+  type        = list(string)
+  default     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
 }
 
 variable "vpc_database_subnets" {
-    description = "List of Database subnet CIDR ranges"
-    type = list(string)
-    default = [ "10.0.21.0/24", "10.0.22.0/24", "10.0.23.0/24" ]  
+  description = "List of database subnet CIDR ranges"
+  type        = list(string)
+  default     = ["10.0.21.0/24", "10.0.22.0/24", "10.0.23.0/24"]
 }
 
 variable "vpc_tags" {
   description = "Tags to apply to vpc peering for api x data vpc"
-  type = map(string)
-  default = {
-    "Name" = "demo-vpc", "created-by" = "terraform"
-  }
+  type        = map(string)
+  default     = { "Name" = "demo-vpc", "created-by" = "terraform" }
 }
+
+# ASG variables
 
 variable "asg_sg_name" {
   description = "Name of the autoscaling group security group"
-  type = string
-  default = "demo-asg-sg"
+  type        = string
+  default     = "demo-asg-sg"
 }
 
 variable "asg_sg_description" {
   description = "Description of the autoscaling group security group"
-  type = string
-  default = "demo-asg-sg"
+  type        = string
+  default     = "demo-asg-sg"
 }
 
 variable "asg_sg_tags" {
   description = "Tags for autoscaling group security group"
-  type = map(string)
-  default = {
-    "Name" = "demo-asg-sg", "created-by" = "terraform"
-  }
+  type        = map(string)
+  default     = { "Name" = "demo-asg-sg", "created-by" = "terraform" }
 }
 
 variable "asg_name" {
-    description = "Name of the autoscaling group"
-    type = string
-    default = "demo-asg"
+  description = "Name of the autoscaling group"
+  type        = string
+  default     = "demo-asg"
 }
 
 variable "asg_min_size" {
-  description = "Autoscaling minimum size"
-  type = number
-  default = 0
+  description = "Auto scaling minimum size"
+  type        = number
+  default     = 0
 }
 
 variable "asg_max_size" {
-  description = "Autoscaling maximum size"
-  type = number
-  default = 1
+  description = "Auto scaling maximum size"
+  type        = number
+  default     = 1
 }
 
 variable "asg_desired_capacity" {
-  description = "Autoscaling desired capacity"
-  type = number
-  default = 1
+  description = "Auto scaling desired capacity"
+  type        = number
+  default     = 1
 }
+
 variable "asg_wait_for_capacity_timeout" {
-  description = "Autoscaling wait for capacity timeout"
-  type = number
-  default = 0
+  description = "Auto scaling wait for capacity timeout"
+  type        = number
+  default     = 0
 }
 
 variable "asg_health_check_type" {
-  description = "Auto scaling wait for capacity timeout"
-  type = string
-  default = "EC2"
+  description = "Auto scaling health check type"
+  type        = string
+  default     = "EC2"
 }
 
 variable "asg_launch_template_name" {
   description = "Name of the autoscaling group launch template"
-  type = string
-  default = "demo-lt"
+  type        = string
+  default     = "demo-lt"
+}
+
+variable "asg_launch_template_description" {
+  description = "Description of the autoscaling group security group"
+  type        = string
+  default     = "demo-lt"
 }
 
 variable "asg_update_default_version" {
   description = "Auto scaling group update default version"
-  type = bool
-  default = true
+  type        = bool
+  default     = true
 }
 
 variable "asg_image_id" {
   description = "Auto scaling group image id"
-  type = string
-  default = "ami-0f844a9675b22ea32"
+  type        = string
+  default     = "ami-026b57f3c383c2eec"
 }
 
 variable "asg_instance_type" {
-  description = "Auto Scaling group instance type"
-  type = string
-  default = "t2.medium"
+  description = "Auto scaling group instance type"
+  type        = string
+  default     = "t3.micro"
 }
 
 variable "asg_ebs_optimized" {
@@ -132,16 +139,19 @@ variable "asg_ebs_optimized" {
   type        = bool
   default     = true
 }
+
 variable "asg_enable_monitoring" {
   description = "Auto scaling group enable monitoring"
   type        = bool
   default     = true
 }
+
 variable "asg_create_iam_instance_profile" {
   description = "Auto scaling group create iam instance profile"
   type        = bool
   default     = true
 }
+
 variable "asg_iam_role_name" {
   description = "Auto scaling group iam role name"
   type        = string
