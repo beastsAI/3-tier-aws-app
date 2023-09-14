@@ -301,7 +301,7 @@ variable "rds_mysql_engine" {
 variable "rds_engine_version" {
   description = "Relational database service mysql engine version"
   type        = string
-  default     = "8.0.27"
+  default     = "8.0.33"
 }
 
 variable "rds_family" {
