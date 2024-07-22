@@ -32,5 +32,3 @@ jobs:
         if: success()
         run: terraform apply -auto-approve tfplan
         working-directory: /home/ec2-user/actions-runner/_work/3-tier-aws-app/3-tier-aws-app # Modify the path to your Terraform configuration
-
-        
